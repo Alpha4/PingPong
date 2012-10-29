@@ -34,7 +34,16 @@ public class Joueur{
 public class Classement{
 	private Joueur[16];
 
-	
+	public Classement(){
+		for (int i=0, i<16, ++i){
+			System.out.println("Entrez les nom, prénom, club et nombre de points du joueur ", i+1)
+			Joueur[i].nom=sc.next();
+			Joueur[i].prénom=sc.next();
+			Joueur[i].club=sc.next();
+			Joueur[i].pts=sc.nextInt();
+			}
+		}
+		
 	public void tri(){
 		int i;
 		int k;
