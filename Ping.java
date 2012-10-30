@@ -29,6 +29,7 @@ public class Joueur{
 		System.out.println("Club : ",club);
 		System.out.println("Nombre de points avant la compétition : ",ptsavant);
 		System.out.println("Nombre de points après la compétition : ",pts);
+		System.out.println("---------------");
 		}
 }
 public class Classement{
