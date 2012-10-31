@@ -5,16 +5,26 @@ import java.util.Scanner;
 *@version 1.0
 *@date 12/10/2012
 */
-public class Pong
+
+public class Ping
 {
-/* Programme principal*/
+
+	/* Programme principal*/
 	public static void main (String[] args)
 	{
 		/*initialisation*/
 		Scanner sc= new Scanner(System.in);
 		System.out.print("Voulez vous entrez manuellement les joueurs ?(oui/non) ");
 		String auto=sc.next();
-		Classement c= new Classement(auto);
+		Classement c;
+		if (auto.equals("non"))
+		{
+			c= new Classement(auto);
+		}
+		else
+		{
+			c= new Classement();
+		}
 		c.tri();
 		
 
@@ -42,17 +52,12 @@ public class Pong
 					{
 						for(int i=0;i<16;i++)
 						{
-							c.j[i].affich();
+							System.out.println("nothing");
 						}
 					}
 					else
 					{
-						int i=0;
-						while (nom.equals(c.j[i].nom)==false)
-						{
-							i++;
-						}
-						c.j[i].affich();
+						System.out.println("F*ck you");
 					}
 					break;
 				case 2 :
