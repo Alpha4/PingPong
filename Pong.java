@@ -5,20 +5,24 @@ import java.util.Scanner;
 *@version 1.0
 *@date 12/10/2012
 */
-
-public class Pingpong {
-	public static void affichage(String nom){
-		System.out.println(nom);
-		}
-		
-	/* Interface du programme*/
-	public static void main (String[] args){
-		Scanner sc=new Scanner(System.in);
+public class Pong
+{
+/* Programme principal*/
+	public static void main (String[] args)
+	{
 		/*initialisation*/
+		Scanner sc= new Scanner(System.in);
+		System.out.print("Voulez vous entrez manuellement les joueurs ?(oui/non) ");
+		String auto=sc.next();
+		Classement c= new Classement(auto);
+		c.tri();
+		
 
 		/*Menu*/
 		int choix=1;
-		do {
+		do
+		{
+			System.out.println("*****MENU*****");
 			System.out.println("1) Fiches des joueurs");
 			System.out.println("2) Poules");
 			System.out.println("3) Quarts de finale");
@@ -29,21 +33,36 @@ public class Pingpong {
 			System.out.print("Choix : ");
 			choix=sc.nextInt();
 			System.out.println("---------------");
-			switch(choix) {				
+			switch(choix)
+			{				
 				case	1 :
 					System.out.println("Entrer le nom de joueur pour voir sa fiche ou 'tous' pour toutes les fiches");
 					String nom=sc.next();
-					if (nom.equals("tous")) {
-						affichage("TOUTES LES FICHES");
+					if (nom.equals("tous"))
+					{
+						for(int i=0;i<16;i++)
+						{
+							c.j[i].affich();
 						}
-					else {affichage(nom);}
+					}
+					else
+					{
+						int i=0;
+						while (nom.equals(c.j[i].nom)==false)
+						{
+							i++;
+						}
+						c.j[i].affich();
+					}
 					break;
 				case 2 :
 					int ch=1;
-					do {
+					do
+					{
 						System.out.print("Choix d'une poule : ");
 						int poule=sc.nextInt();
-						if (poule>0 && poule <5) {
+						if (poule>0 && poule <5)
+						{
 							System.out.println("----------------------");
 							System.out.println("1) Affichage des joueurs");
 							System.out.println("2) Affichage des matchs");
@@ -51,7 +70,8 @@ public class Pingpong {
 							System.out.println("4) Affichage des résultats");
 							System.out.println("5) Retour");
 							ch=sc.nextInt();
-							switch(ch) {
+							switch(ch)
+							{
 								case 1:
 									System.out.println("1!");
 									break;
@@ -69,7 +89,8 @@ public class Pingpong {
 									break;
 							}
 						}
-						else {
+						else
+						{
 							System.out.println("Entrer un numéro de poule valide : 1, 2, 3 ou 4.");
 						}
 					}
