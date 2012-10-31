@@ -6,9 +6,8 @@ import java.util.Scanner;
 *@date 12/10/2012
 */
 
-public class Ping{
+public class Ping{	
 	Scanner sc= new Scanner(System.in);
-	
 	/* Classe : Joueur
 	Méthodes : Constructeur, affichage, setPts
 	*/
@@ -63,6 +62,32 @@ public class Ping{
 			}
 		}
 		
+		public Classement(String auto)
+		{
+			if (auto.equals("non"))
+			{
+				j[0]= new Joueur("Dark","Vador","Côté Obscur",600);
+				j[1]= new Joueur("Darth","Sidious","Côté Obscur",612);
+				j[2]= new Joueur("Skywalker","Luke","Côté Clair",555);
+				j[3]= new Joueur("Kenobi","Obiwan","Côté Clair",599);
+				j[4]= new Joueur("Jin","Qui-Gon","Côté Clair",613);
+				j[5]= new Joueur("Maître","Yoda","Côté Clair",620);
+				j[6]= new Joueur("C3","PO","Droïde",500);
+				j[7]= new Joueur("R2","D2","Droïde",512);
+				j[8]= new Joueur("Bros","Mario","Nintendo",520);
+				j[9]= new Joueur("Bros","Luigi","Nintendo",519);
+				j[10]= new Joueur("Princesse","Peach","Nintendo",510);
+				j[11]= new Joueur("Papy","Champi","Nintendo",513);
+				j[12]= new Joueur("Yoshi","vert","Nintendo",518);
+				j[13]= new Joueur("Donkey","Kong","Nintendo",515);
+				j[14]= new Joueur("The Hedgehog","Sonic","SEGA",517);
+				j[15]= new Joueur("Miles","'Tails' Prower","SEGA",516);
+			}
+			else
+			{
+				this(); //java:88: call to this must be first statement in constructor
+			}
+		}
 		public void tri(){
 			boolean permut;
 			do
@@ -88,18 +113,16 @@ public class Ping{
 	public class Poule
 	{
 		private int num;
-		private Joueur j1;
-		private Joueur j2;
-		private Joueur j3;
-		private Joueur j4;
+		private Joueur j[]= new Joueur[4];
+		private Match m[]= new Match[6];
 	
 		public Poule(int num, Classement c)
 		{
 			this.num=num;
-			j1=c.j[num-1];
-			j2=c.j[num+3];
-			j3=c.j[num+7];
-			j4=c.j[num+11];
+			j[0]=c.j[num-1];
+			j[1]=c.j[num+3];
+			j[2]=c.j[num+7];
+			j[3]=c.j[num+11];
 		}
 	}
 	/* Classe : Match
@@ -115,7 +138,10 @@ public class Ping{
 	{
 		/*initialisation*/
 		Ping pong = new Ping();
-		Classement c= pong.new Classement();
+		Scanner sc= new Scanner(System.in);
+		System.out.print("Voulez vous entrez manuellement les joueurs ?(oui/non) ");
+		String auto=sc.next();
+		Classement c= pong.new Classement(auto);
 		c.tri();
 		
 
