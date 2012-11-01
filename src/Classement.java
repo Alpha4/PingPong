@@ -1,15 +1,22 @@
 import java.util.Scanner;
 import java.util.Random;
 
-/* Classe : Classement
-Méthodes : Constructeur et tri
+/* 	Classe : Classement
+*	Méthodes :
+*		Constructeur avec saisie
+*		Constructeur avec données préenregistrées
+*		Méthode de tri du tableau en fonction des points
+*		Méthode d'affichage des fiches des joueurs (soit tous soit un par son nom)
+*		getJoueur : retourne le joueur i(0,1,…,15) du classement
 */
 public class Classement
 {
 	static Scanner sc= new Scanner(System.in);
 	private Joueur[] j= new Joueur[16];
 	
-	/*Constructeur avec saisie des données*/
+	/*	Constructeur
+	* 	avec saisie des données
+	*/
 	public Classement()
 	{
 		for (int i=0; i<16; ++i)
@@ -23,7 +30,9 @@ public class Classement
 		}
 	}
 	
-	/*Constructeur d'un classement préenregistré pour tester*/
+	/*	Constructeur
+	*	 d'un classement préenregistré pour tester
+	*/
 	public Classement(String auto)
 	{
 		j[0]= new Joueur("Dark","Vador","Côté Obscur",600);
@@ -44,9 +53,9 @@ public class Classement
 		j[15]= new Joueur("Miles","'Tails' Prower","SEGA",516);
 	}
 	
-	/* Tri a bulles du tableau de joueur par rapport aux points*/
+	// Méthode triant le tableau par ordre décroissant des points(pts) des joueurs
 	public void tri(){
-		boolean permut;
+		boolean permut; //tri à bulles :D
 		do
 		{
 			permut= false;
@@ -63,9 +72,38 @@ public class Classement
 		}while (permut ==true);
 	}
 	
-	/*getJoueur*/
+	// getJoueur : retourne le joueur i(0,1,…,15) du classement
 	public Joueur getJoueur(int i)
 	{
 		return j[i];
+	}
+	
+	//Affichage de fiches de Joueurs
+	public void affich(String nom)
+	{
+		if (nom.equals("tous")) //Affichage de toutes les fiches
+		{
+			for(int i=0;i<16;i++) 
+			{
+				j[i].affich(); // appel de la fonction d'affichage de la fiche d'un joueur pour tous les j[i] du classement
+			}
+		}
+		else // Affichage de la fiche du joueur 
+		{
+			int i=0;
+			while (nom.equals(j[i].getNom())==false && i<16) // Recherche de l'indice du joueur portant ce nom
+			{
+				i++;
+			}
+			if (nom.equals(j[i].getNom())==true)
+			{
+				j[i].affich();
+			}
+			else //Erreur si le joueur n'existe pas
+			{
+				System.out.println("Ce joueur n'existe pas");
+				System.out.println("----------------------");
+			}
+		}
 	}
 }
