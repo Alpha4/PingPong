@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.Random;
+
 /**
 *Projet de TP : Gestion d'un tournoi de tennis de table 
 *@author Aurelien Brisseau et Hippolyte Gandon
@@ -19,11 +21,11 @@ public class Ping
 		Classement c;
 		if (auto.equals("non"))
 		{
-			c= new Classement(auto);
+			c=new Classement(auto);
 		}
 		else
 		{
-			c= new Classement();
+			c=new Classement();
 		}
 		c.tri();
 		
@@ -46,18 +48,24 @@ public class Ping
 			switch(choix)
 			{				
 				case	1 :
-					System.out.println("Entrer le nom de joueur pour voir sa fiche ou 'tous' pour toutes les fiches");
+					System.out.println("Entrer le nom d'un joueur pour voir sa fiche ou 'tous' pour toutes les fiches :");
 					String nom=sc.next();
+					System.out.println("---------------");
 					if (nom.equals("tous"))
 					{
 						for(int i=0;i<16;i++)
 						{
-							System.out.println("nothing");
+							c.getJoueur(i).affich();
 						}
 					}
 					else
 					{
-						System.out.println("F*ck you");
+						int i=0;
+						while (nom.equals(c.getJoueur(i).getNom())==false)
+						{
+							i++;
+						}
+					c.getJoueur(i).affich();
 					}
 					break;
 				case 2 :

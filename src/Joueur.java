@@ -1,6 +1,9 @@
+import java.util.Scanner;
+import java.util.Random;
+
 /* Classe : Joueur
-	Méthodes : Constructeur, affichage, setPts
-	*/
+Méthodes : Constructeur, affichage, setPts
+*/
 public class Joueur
 	{
 		private String nom;
@@ -33,5 +36,13 @@ public class Joueur
 		public int getPts()
 		{
 			return this.pts;
+		}
+		public String getNom()
+		{
+			return this.nom;
+		}
+		public String getPrenom()
+		{
+			return this.prenom;
 		}
 	}
