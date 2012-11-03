@@ -18,6 +18,7 @@ public class Ping
 		Scanner sc= new Scanner(System.in);
 		System.out.print("Voulez vous entrez manuellement les joueurs ?(oui/non) ");
 		String auto=sc.next();
+		//Création du classement
 		Classement c;
 		if (auto.equals("non"))
 		{
@@ -27,13 +28,19 @@ public class Ping
 		{
 			c=new Classement();
 		}
-		c.tri();
-		
+		// Création des poules (avec déroulement des matchs)
 		Poule p1= new Poule(1,c,1);
 		Poule p2= new Poule(2,c,3);
 		Poule p3= new Poule(3,c,5);
 		Poule p4= new Poule(4,c,7);
+		// Création des match de quarts de finale
+		Match q1=new Match(p1.getJoueur(0),p4.getJoueur(1),"15:00",1);
+		Match q2=new Match(p3.getJoueur(0),p2.getJoueur(1),"15:00",2);
+		Match q3=new Match(p4.getJoueur(0),p1.getJoueur(1),"15:00",3);
+		Match q4=new Match(p2.getJoueur(0),p3.getJoueur(1),"15:00",4);
+		// Création des matchs de demi finale
 		
+		//Création des matchs de finale et petite finale
 
 		/*Menu*/
 		int choix=1;
@@ -144,19 +151,19 @@ public class Ping
 									switch(poule)
 									{
 										case 1:
-											p1.affichResultats();
+											p1.affichClassement();
 											break;
 								
 										case 2:
-											p2.affichResultats();
+											p2.affichClassement();
 											break;
 								
 										case 3:
-											p3.affichResultats();
+											p3.affichClassement();
 											break;
 											
 										case 4:
-											p4.affichResultats();
+											p4.affichClassement();
 											break;
 									}
 									break;
@@ -172,7 +179,10 @@ public class Ping
 					break;
 					
 				case 3:
-					System.out.println("3!");		
+					q1.affichResultat();
+					q2.affichResultat();
+					q3.affichResultat();
+					q4.affichResultat();	
 					break;
 							
 				case 4:

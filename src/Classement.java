@@ -28,6 +28,7 @@ public class Classement
 			int pts=sc.nextInt();
 			j[i-1]= new Joueur(nom,prenom,club,pts);
 		}
+		tri();
 	}
 	
 	/*	Constructeur
@@ -51,10 +52,11 @@ public class Classement
 		j[13]= new Joueur("Donkey","Kong","Nintendo",515);
 		j[14]= new Joueur("The Hedgehog","Sonic","SEGA",517);
 		j[15]= new Joueur("Miles","'Tails' Prower","SEGA",516);
+		tri();
 	}
 	
 	// Méthode triant le tableau par ordre décroissant des points(pts) des joueurs
-	public void tri(){
+	private void tri(){
 		boolean permut; //tri à bulles :D
 		do
 		{

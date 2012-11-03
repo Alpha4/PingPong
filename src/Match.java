@@ -84,5 +84,11 @@ public class Match
 	{
 		return j[i];
 	}
+	
+	// getJoueur : retourne le joueur i(0,1) du match
+	public int getResult()
+	{
+		return result;
+	}
 
 }
