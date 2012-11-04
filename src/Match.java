@@ -7,7 +7,8 @@ import java.util.Random;
 *		Méthode d'affichage des fiches des joueurs
 *		Méthode affichant les informations sur le match : Joueurs, table, heure
 *		Méthode affichant les informations sur le match : Joueurs, table, heure ainsi que l'issue de celui-ci
-*		getJoueur : retourne le joueur i(0,1) du match
+*		getPerdant : retourne le joueur perdant du match
+*		getVainqueur : retourne le joueur vainqueur du match
 */
 	
 public class Match
@@ -27,7 +28,7 @@ public class Match
 		j[1]=j2;
 		this.heure=heure;
 		this.table=table;
-		result=rand.nextInt(2); 
+		result=rand.nextInt(2); // tirage au sort du gagnant avec la classe Random
 		if (result==0) //j2 gagne --> +4pts pour j2 -4pts pour j1
 		{
 			j[1].addPts(4);
@@ -79,16 +80,30 @@ public class Match
 		System.out.println("\n----------------------");
 	}
 	
-	// getJoueur : retourne le joueur i(0,1) du match
-	public Joueur getJoueur(int i)
+	// getPerdant : retourne le joueur perdant du match
+	public Joueur getPerdant()
 	{
-		return j[i];
+		if (result==0) //j2 vainqueur
+			{
+				return j[0];
+			}
+			else //j1 vainqueur
+			{
+				return j[1];
+			}
 	}
 	
-	// getJoueur : retourne le joueur i(0,1) du match
-	public int getResult()
+	// getVainqueur : retourne le joueur vainqueur du match
+	public Joueur getVainqueur()
 	{
-		return result;
+		if (result==0) //j2 vainqueur
+			{
+				return j[1];
+			}
+			else //j1 vainqueur
+			{
+				return j[0];
+			}
 	}
 
 }

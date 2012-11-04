@@ -76,14 +76,7 @@ public class Poule
 	private void tri(){
 		for (int i=0;i<6;i++)
 		{
-			if (m[i].getResult()==0) //j2 gagne --> nb de victoires+=1
-			{
-				m[i].getJoueur(1).victoire();
-			}
-			else //j1 gagne --> nb de victoires+=1
-			{
-				m[i].getJoueur(0).victoire();
-			}		
+			m[i].getVainqueur().victoire();		
 		}
 		boolean permut; //tri à bulles :D
 		do
