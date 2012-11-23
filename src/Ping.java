@@ -3,9 +3,8 @@ import java.util.Random;
 
 /**
 *Projet de TP : Gestion d'un tournoi de tennis de table 
-*@author Aurelien Brisseau et Hippolyte Gandon
-*@version 1.0
-*@date 12/10/2012
+* @author Aurelien Brisseau et Hippolyte Gandon
+* @version 2.4
 */
 
 public class Ping
@@ -33,17 +32,17 @@ public class Ping
 		Poule p2= new Poule(2,c,3);
 		Poule p3= new Poule(3,c,5);
 		Poule p4= new Poule(4,c,7);
-		// Création des match de quarts de finale
+		// Création des match de quarts de finale (avec déroulement des matchs)
 		Match q1=new Match(p1.getJoueur(0),p4.getJoueur(1),"14:00",1);
 		Match q2=new Match(p3.getJoueur(0),p2.getJoueur(1),"14:00",2);
 		Match q3=new Match(p4.getJoueur(0),p1.getJoueur(1),"14:00",3);
 		Match q4=new Match(p2.getJoueur(0),p3.getJoueur(1),"14:00",4);
-		// Création des matchs de demi finale
+		// Création des matchs de demi finale (avec déroulement des matchs)
 		Match d1=new Match(q1.getVainqueur(),q2.getVainqueur(),"15:00",1);
 		Match d2=new Match(q3.getVainqueur(),q4.getVainqueur(),"15:00",2);
-		//Création des matchs de finale et petite finale
-		Match finale=new Match(d1.getVainqueur(),d2.getVainqueur(),"17:00",1);
+		//Création des matchs de finale et petite finale (avec déroulement des matchs)
 		Match petitef=new Match(d1.getPerdant(),d2.getPerdant(),"16:00",1);
+		Match finale=new Match(d1.getVainqueur(),d2.getVainqueur(),"17:00",1);
 		/*Menu*/
 		int choix=1;
 		do

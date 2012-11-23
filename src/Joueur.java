@@ -1,13 +1,13 @@
 import java.util.Scanner;
 import java.util.Random;
 
-/*	Classe : Joueur
+/**	Classe : Joueur
 *	Méthodes :
 *		Constructeur avec copie du nombre de points indiqués dans la variable ptsavant et victoire initialisé à 0
 *		Méthode d'affichage de la fiche du joueur i.e. toutes ses infos
 *		Méthode de mise à jour du nombre de points
 *		Méthode de mise à jour du nombre de victoires
-*		getPts : retourne le nombre de points du joueur
+*		getPtsAvant : retourne le nombre de points du joueur avant la compétition
 *		getVict : retourne le nombre de victoires du joueur
 *		getNom : retourne le nom du joueur
 *		Méthode affichant les nom et prénom du joueur
@@ -21,7 +21,7 @@ public class Joueur
 		private int ptsavant;
 		private int victoire;
 	
-		/*	Constructeur
+		/** Constructeur
 		*	avec copie du nombre de points indiqués dans la variable ptsavant
 		*	victoire initialisé à 0
 		*/
@@ -35,7 +35,8 @@ public class Joueur
 			this.victoire=0;
 		}
 		
-		// Méthode d'affichage de la fiche du joueur i.e. toutes ses infos
+		/** Méthode d'affichage de la fiche du joueur i.e. toutes ses infos
+		*/
 		public void affich()
 		{
 			System.out.println("Joueur : "+nom+" "+prenom);
@@ -45,35 +46,41 @@ public class Joueur
 			System.out.println("----------------------");
 		}
 		
-		// Méthode de mise à jour du nombre de points
+		/** Méthode de mise à jour du nombre de points*/
 		public void addPts(int pts){
 			this.pts+=pts; //ajout du nombre de points passé en paramètre à la variable pts
 		}
 		
-		// Méthode de mise à jour du nombre de victoires
+		/** Méthode de mise à jour du nombre de victoires*/
 		public void victoire(){
 			this.victoire+=1;
 		}
 		
-		// getPts : retourne le nombre de points du joueur
-		public int getPts()
+		/** getPtsAvant : retourne le nombre de points du joueur
+		* @return pts points du joueur
+		*/
+		public int getPtsAvant()
 		{
 			return this.pts;
 		}
 
-		// getVict : retourne le nombre de victoires du joueur
+		/** getVict : retourne le nombre de victoires du joueur
+		* @return victoire nombre de victoire du joueur
+		*/
 		public int getVict()
 		{
 			return this.victoire;
 		}
 		
-		// getNom : retourne le nom du joueur
+		/** getNom : retourne le nom du joueur
+		* @return nom nom du joueur
+		*/
 		public String getNom()
 		{
 			return this.nom;
 		}
 		
-		// Méthode affichant les nom et prénom du joueur
+		/** Méthode affichant les nom et prénom du joueur*/
 		public void affichNomPrenom()
 		{
 			System.out.print(nom+" "+prenom);

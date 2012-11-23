@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
-/*	Classe : Poule
+/**	Classe : Poule
 *	Méthodes :
 *		Constructeur : Joueurs sélectionnés dans le classement c à partir du numéro de Poule ; table indique la première table utilisée par la poule ; puis tri par nombre de victoires
 *		Méthode d'affichage de toutes les fiches de joueurs de la poule
@@ -18,10 +18,13 @@ public class Poule
 	private Joueur j[]= new Joueur[4];
 	private Match m[]= new Match[6];
 	
-	/*	Constructeur
+	/**	Constructeur
 	*	Joueurs sélectionnés dans le classement c à partir du numéro de Poule
 	*	table indique la première table utilisée par la poule
 	*	puis tri par nombre de victoires
+	* @see Classement#getJoueur(int i)
+	* @see #tri()
+	* @see Match#Match(Joueur j1,Joueur j2, String heure, int table)
 	*/
 	public Poule(int num, Classement c,int table)
 	{
@@ -39,13 +42,18 @@ public class Poule
 		tri();
 	}
 	
-	// getJoueur : retourne le joueur i(0,1,2,3) de la poule
+	/** getJoueur : retourne le joueur i(0,1,2,3) de la poule
+	* @param i indice du joueur
+	* @return j[i] joueur désiré
+	*/
 	public Joueur getJoueur(int i)
 	{
 		return j[i];
 	}
 	
-	// Méthode d'affichage de toutes les fiches de joueurs de la poule
+	/** Méthode d'affichage de toutes les fiches de joueurs de la poule
+	* @see Joueur#affich()
+	*/
 	public void affichJoueurs()
 	{
 		for(int i=0;i<4;i++)
@@ -54,7 +62,9 @@ public class Poule
 		}
 	}
 	
-	// Méthode d'affichage de tous les matchs de la poule
+	/** Méthode d'affichage de tous les matchs de la poule
+	* @see Match#affich()
+	*/
 	public void affichMatchs()
 	{
 		for(int i=0;i<6;i++)
@@ -63,7 +73,9 @@ public class Poule
 		}
 	}
 	
-	// Méthode d'affichage de tous les matchs de la poule avec leur résultats !
+	/** Méthode d'affichage de tous les matchs de la poule avec leur résultats !
+	* @see Match#affichResultat()
+	*/
 	public void affichResultats()
 	{
 		for(int i=0;i<6;i++)
@@ -72,7 +84,12 @@ public class Poule
 		}
 	}
 	
-	// Méthode calculant le nombre de victoires pour chaque joueur puis triant le tableau par ordre décroissant du nombre de victoire des joueurs
+	/** Méthode calculant le nombre de victoires pour chaque joueur puis triant le tableau par ordre décroissant du nombre de victoire des joueurs
+	* @see Match#getVainqueur()
+	* @see Joueur#victoire()
+	* @see Joueur#getVict()
+	* @see Joueur#getPtsAvant()
+	*/
 	private void tri(){
 		for (int i=0;i<6;i++)
 		{
@@ -84,27 +101,20 @@ public class Poule
 			permut= false;
 			for (int i=0; i<3;i++)
 			{
-				if (j[i].getVict()<j[i+1].getVict())
+				if (j[i].getVict()<j[i+1].getVict()||((j[i].getVict()==j[i+1].getVict())&&(j[i].getPtsAvant()<j[i+1].getPtsAvant()))) // Permutation si le joueur i a moins de victoire que le joueur i+1 ou si leur nombre de victoires est égale en fonction du nombre de points avant la compétition
 				{
 					Joueur tmp=j[i+1];
 					j[i+1]=j[i];
 					j[i]=tmp;
 					permut=true;
 				}
-				else if (j[i].getVict()==j[i+1].getVict())
-				{
-					if (j[i].getPts()<j[i+1].getPts())
-					{
-						Joueur tmp=j[i+1];
-						j[i+1]=j[i];
-						j[i]=tmp;
-						permut=true;
-					}
-				}
 			}
 		}while (permut ==true);
 	}
-	//Méthode d'affichage du classement de la poule
+	/** Méthode d'affichage du classement de la poule
+	* @see Joueur#affichNomPrenom()
+	* @see Joueur#getVict()
+	*/
 	public void affichClassement()
 	{
 		j[0].affichNomPrenom();

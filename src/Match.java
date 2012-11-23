@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
-/*	Classe : Match
+/**	Classe : Match
 *	Méthodes :
 *		Constructeur avec modification du nombre de points global des joueurs
 *		Méthode d'affichage des fiches des joueurs
@@ -19,8 +19,9 @@ public class Match
 	private int table;
 	private int result; // 0 si j[0] perd le match ; 1 si j[0] gagne le match
 	
-	/*	Constructeur
+	/**	Constructeur
 	*	avec modification du nombre de point global des joueurs
+	* @see Joueur#addPts(int pts)
 	*/	
 	public Match(Joueur j1,Joueur j2, String heure, int table)
 	{
@@ -40,14 +41,18 @@ public class Match
 			j[1].addPts(-2);
 		}		
 	}
-	// Méthode d'affichage des fiches des joueurs
+	/** Méthode d'affichage des fiches des joueurs
+	* @see Joueur#affich()
+	*/
 	public void affichJoueurs()
 	{
 		j[0].affich();
 		j[1].affich();
 	}
 	
-	// Méthode affichant les informations sur le match : Joueurs, table, heure
+	/** Méthode affichant les informations sur le match : Joueurs, table, heure
+	* @see Joueur#affichNomPrenom()
+	*/
 	public void affich()
 	{
 		System.out.println("Match");
@@ -58,8 +63,10 @@ public class Match
 		System.out.println("----------------------");
 	}
 	
-	// Méthode affichant les informations sur le match : Joueurs, table, heure
-	//	ainsi que l'issue de celui-ci
+	/** Méthode affichant les informations sur le match : Joueurs, table, heure
+	*	ainsi que l'issue de celui-ci
+	* @see Joueur#affichNomPrenom()
+	*/
 	public void affichResultat()
 	{
 		System.out.println("Match");
@@ -80,7 +87,9 @@ public class Match
 		System.out.println("\n----------------------");
 	}
 	
-	// getPerdant : retourne le joueur perdant du match
+	/** getPerdant : retourne le joueur perdant du match
+	* @return j[i] joueur perdant
+	*/
 	public Joueur getPerdant()
 	{
 		if (result==0) //j2 vainqueur
@@ -93,7 +102,9 @@ public class Match
 			}
 	}
 	
-	// getVainqueur : retourne le joueur vainqueur du match
+	/** getVainqueur : retourne le joueur vainqueur du match
+	* @return j[i] joueur gagnant
+	*/
 	public Joueur getVainqueur()
 	{
 		if (result==0) //j2 vainqueur

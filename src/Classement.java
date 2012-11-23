@@ -1,7 +1,7 @@
 import java.util.Scanner;
 import java.util.Random;
 
-/* 	Classe : Classement
+/**	Classe : Classement
 *	Méthodes :
 *		Constructeur avec saisie
 *		Constructeur avec données préenregistrées
@@ -14,8 +14,10 @@ public class Classement
 	static Scanner sc= new Scanner(System.in);
 	private Joueur[] j= new Joueur[16];
 	
-	/*	Constructeur
+	/**	Constructeur
 	* 	avec saisie des données
+	* @see #tri
+	* @see Joueur#Joueur(String nom,String prenom,String club,int pts)
 	*/
 	public Classement()
 	{
@@ -26,13 +28,15 @@ public class Classement
 			String prenom=sc.next();
 			String club=sc.next();
 			int pts=sc.nextInt();
-			j[i-1]= new Joueur(nom,prenom,club,pts);
+			j[i]= new Joueur(nom,prenom,club,pts);
 		}
 		tri();
 	}
 	
-	/*	Constructeur
+	/**	Constructeur
 	*	 d'un classement préenregistré pour tester
+	* @see Joueur#Joueur(String nom,String prenom,String club,int pts)
+	* @see #tri
 	*/
 	public Classement(String auto)
 	{
@@ -47,15 +51,17 @@ public class Classement
 		j[8]= new Joueur("Mario","Mario","Nintendo",520);
 		j[9]= new Joueur("Bros","Luigi","Nintendo",519);
 		j[10]= new Joueur("Princesse","Peach","Nintendo",510);
-		j[11]= new Joueur("Papy","Champi","Nintendo",513);
-		j[12]= new Joueur("Yoshi","vert","Nintendo",518);
+		j[11]= new Joueur("Robbes","Didier","Java",513);
+		j[12]= new Joueur("Granvilliers","Laurent","Java",518);
 		j[13]= new Joueur("Donkey","Kong","Nintendo",515);
 		j[14]= new Joueur("The Hedgehog","Sonic","SEGA",517);
 		j[15]= new Joueur("Miles","'Tails' Prower","SEGA",516);
 		tri();
 	}
 	
-	// Méthode triant le tableau par ordre décroissant des points(pts) des joueurs
+	/** Méthode triant le tableau par ordre décroissant des points(pts) des joueurs
+	* @see Joueur#getPtsAvant()
+	*/
 	private void tri(){
 		boolean permut; //tri à bulles :D
 		do
@@ -63,7 +69,7 @@ public class Classement
 			permut= false;
 			for (int i=0; i<15;i++)
 			{
-				if (j[i].getPts()<j[i+1].getPts())
+				if (j[i].getPtsAvant()<j[i+1].getPtsAvant())
 				{
 					Joueur tmp=j[i+1];
 					j[i+1]=j[i];
@@ -74,13 +80,20 @@ public class Classement
 		}while (permut ==true);
 	}
 	
-	// getJoueur : retourne le joueur i(0,1,…,15) du classement
+	/** getJoueur : retourne le joueur i(0,1,…,15) du classement
+	* @param i indice du joueur à retourner
+	* @return j[i] Joueur désiré 
+	*/
 	public Joueur getJoueur(int i)
 	{
 		return j[i];
 	}
 	
-	//Affichage de fiches de Joueurs
+	/** Affichage de fiches de Joueurs
+	* @param nom nom du joueur dont on veut afficher la fiche ou "tous" pour toutes les fiches
+	* @see Joueur#getNom()
+	* @see Joueur#affich()
+	*/
 	public void affich(String nom)
 	{
 		if (nom.equals("tous")) //Affichage de toutes les fiches
