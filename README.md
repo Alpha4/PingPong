@@ -1,1 +1,5 @@
-[![Stories in Ready](https://badge.waffle.io/Alpha4/PingPong.png?label=ready&title=Ready)](https://waffle.io/Alpha4/PingPong)
+# PingPong
+
+Small CLI Java application to manage tournaments
+
+This was a project part of a Object-Oriented Programmation course.
